@@ -67,3 +67,11 @@ def get_books_on_loan():
 # insert_loan(1, 1, "2022-01-01", "None")
 # print(get_books_on_loan())
 
+#Função para --->EXIBIR<-- todos os Usuários
+def get_user():
+    conn = connect()
+    c = conn.cursor()
+    c.execute("SELECT * FROM usuarios")
+    users = c.fetchall()
+    conn.close()
+    return users
