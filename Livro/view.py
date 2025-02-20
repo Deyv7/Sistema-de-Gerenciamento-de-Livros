@@ -2,7 +2,7 @@ import sqlite3
 
 #Conexão com o DB ou criar um novo DB
 def connect():
-    conn = sqlite3.connect("dados.db")
+    conn = sqlite3.connect("data.db")
     return conn
 
 #Função para --->INSERIR<--- um novo Livro

@@ -64,4 +64,3 @@ Sinta-se à vontade para abrir issues ou enviar pull requests para melhorias ou 
 ## Licença
 Distribuído sob a [MIT License](LICENSE).  
 Veja o arquivo [LICENSE](LICENSE) para mais informações.
-```
