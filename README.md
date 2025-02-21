@@ -20,7 +20,7 @@ O **Sistema de Gerenciamento de Livros** é uma aplicação desenvolvida em Pyth
 - Pillow (PIL)
 
 ## Estrutura do Projeto
-```
+
 Sistema-de-Gerenciamento-de-Livros/
 ├── Livro/
 │   ├── view.py       # Funções de conexão com o banco de dados, inserção e consulta de dados.
@@ -30,7 +30,7 @@ Sistema-de-Gerenciamento-de-Livros/
 │   ├── save.png      # Imagem utilizada para o botão de salvar
 │   └── ...           # Outras imagens ou ícones
 └── README.md         # Este arquivo
-```
+
 
 ## Instalação e Execução
 
