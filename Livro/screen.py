@@ -109,35 +109,35 @@ def control(i):
         for widget in frameRight.winfo_children():
             widget.destroy()
         #chamando a função novo usuário
-        insert_user()
+        new_user()
 
     #Novo Livro
     if i == 'novo livro':
         for widget in frameRight.winfo_children():
             widget.destroy()
         #chamando a função novo livro
-        insert_book()
+        pass
 
     #Ver Usuários
     if i == 'ver usuarios':
         for widget in frameRight.winfo_children():
             widget.destroy()
         #chamando a função ver usuários
-        get_user()
+        see_user()
 
     #Ver Livros
     if i == 'ver livros':
         for widget in frameRight.winfo_children():
             widget.destroy()
         #chamando a função ver livros
-        show_books()
+        pass
 
 # Linha de borda do cabeçalho ------------------------
 app_line = Label(frameUP, width=770, padx=5, anchor=NW, font=('Verdana 1'), bg=co3, fg=co1)
 app_line.place(x=0, y=47)
 
 # Novo Usuário ------------------------------------------
-def insert_user():
+def new_user():
     global img_save
     def add_user():
         first_name = e_f_name.get()
@@ -146,7 +146,7 @@ def insert_user():
         email = e_email.get()
         phone = e_phone.get()
 
-        lista = [first_name, last_name, address, email, phone]
+        lista = [first_name,last_name,address,email,phone]
 
         #verificando caso um campo esteja vazio ou não
         for i in lista:
@@ -200,6 +200,50 @@ def insert_user():
     img_save = ImageTk.PhotoImage(img_save)
     b_save = Button(frameRight, image=img_save, compound=LEFT, width=100, anchor=NW, command=add_user, text="Salvar", bg=co1, fg=co4, overrelief=RIDGE, relief=GROOVE, font=('Ivy 11'))
     b_save.grid(row=7, column=0, columnspan=4, sticky=NSEW, padx=5, pady=5)
+
+# Função para --->VER<--- Usuários
+def see_user():
+    app_ = Label(frameRight,text="Todos os usuários do banco de dados",width=50,compound=LEFT, padx=5,pady=10, relief=FLAT, anchor=NW, font=('Verdana 12'),bg=co1, fg=co4)
+    app_.grid(row=0, column=0, columnspan=3, sticky=NSEW)
+    l_linha = Label(frameRight, width=400, height=1,anchor=NW, font=('Verdana 1 '), bg=co3, fg=co1)
+    l_linha.grid(row=1, column=0, columnspan=3, sticky=NSEW)
+
+    dados = get_user()
+
+    #creating a treeview with dual scrollbars
+    list_header = ['ID','Nome','Sobrenome','Endereço','Email','Telefone']
+    
+    global tree
+    
+    tree = ttk.Treeview(frameRight, selectmode="extended",
+                        columns=list_header, show="headings")
+    
+    vsb = ttk.Scrollbar(frameRight, orient="vertical", command=tree.yview)
+    hsb = ttk.Scrollbar(frameRight, orient="horizontal", command=tree.xview)
+    tree.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
+
+    tree.grid(column=0, row=2, sticky='nsew')
+    vsb.grid(column=1, row=2, sticky='ns')
+    hsb.grid(column=0, row=3, sticky='ew')
+    frameRight.grid_rowconfigure(0, weight=12)
+
+    hd=["nw","nw","nw","nw","nw","nw"]
+    h=[20,80,80,120,120,76,100]
+    n=0
+
+    for col in list_header:
+        tree.heading(col, text=col, anchor='nw')
+        #adjust the column's width to the header string
+        tree.column(col, width=h[n],anchor=hd[n])
+        
+        n+=1
+
+    for item in dados:
+        tree.insert('', 'end', values=item)
+
+#
+
+
 
 window.mainloop()
 
