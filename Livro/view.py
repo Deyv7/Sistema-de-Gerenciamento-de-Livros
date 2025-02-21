@@ -84,3 +84,20 @@ def return_loan(id_emprestimo, data_devolucao):
     conn.execute("UPDATE emprestimos SET data_devolucao = ? WHERE id = ?", (data_devolucao, id_emprestimo))
     conn.commit()
     conn.close()
+
+# Função para Pesquisar Usuário
+def search_user(nome):
+    conn = connect()
+    usuarios = conn.execute("SELECT * FROM usuarios WHERE nome LIKE ?", (f"%{nome}%",)).fetchall()
+    conn.close()
+    return usuarios
+
+# Função para saber se há livro disponível 
+def get_available_books():
+    conn = connect()
+    # Seleciona os livros cujo id não aparece na coluna id_livro da tabela emprestimos onde data_devolucao é NULL
+    available_books = conn.execute(
+        "SELECT * FROM livros WHERE id NOT IN (SELECT id_livro FROM emprestimos WHERE data_devolucao IS NULL)"
+    ).fetchall()
+    conn.close()
+    return available_books
