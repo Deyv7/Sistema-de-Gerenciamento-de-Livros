@@ -30,10 +30,11 @@ def show_books():
     conn.close()
     if not livros:
         print("Nenhum livro encontrado na biblioteca.")
-        return
-    print("Livros na blibioteca:")
+        return []  # Retorna uma lista vazia para evitar problemas de iteração
+    print("Livros na biblioteca:")
     for livro in livros:
         print(f"ID: {livro[0]}\nTitulo: {livro[1]}\nAutor: {livro[2]}\nEditora: {livro[3]}\nAno de publicacao: {livro[4]}\nISBN: {livro[5]}")
+    return livros  # Retorna a lista de livros para que a interface possa usá-la
     
 #Exemplo das funções
 # insert_book("O Senhor dos Aneis", "J. R. R. Tolkien", "Editora A", 1954, "978-3-16-148410-0")
