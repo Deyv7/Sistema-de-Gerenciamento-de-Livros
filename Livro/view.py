@@ -76,3 +76,11 @@ def get_user():
     users = c.fetchall()
     conn.close()
     return users
+
+
+# Função para devolução de um emprestimo
+def return_loan(id_emprestimo, data_devolucao):
+    conn = connect()
+    conn.execute("UPDATE emprestimos SET data_devolucao = ? WHERE id = ?", (data_devolucao, id_emprestimo))
+    conn.commit()
+    conn.close()

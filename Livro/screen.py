@@ -151,7 +151,7 @@ def control(i):
         for widget in frameRight.winfo_children():
             widget.destroy()
         #chamando a função realizar um emprestimo
-        pass
+        devolution()
 
     #Livros emprestados no momento
     if i == 'livros emprestados':
@@ -159,6 +159,8 @@ def control(i):
             widget.destroy()
         #chamando a função realizar um emprestimo
         borrowed_books()
+
+
 
 # Linha de borda do cabeçalho ------------------------
 app_line = Label(frameUP, width=770, padx=5, anchor=NW, font=('Verdana 1'), bg=co3, fg=co1)
@@ -426,7 +428,7 @@ def realize():
     b_salvar = Button(frameRight, command=add ,image=img_salvar, compound=LEFT,width=100,anchor=NW, text="Salvar", bg=co1, fg=co4, font=('Ivy 11'), overrelief=RIDGE, relief=GROOVE)
     b_salvar.grid(row=7, column=1, pady=5, sticky=NSEW)
 
-#ver livros emprestados
+# Função para --> exibir<-- todos os Livros emprestados
 def borrowed_books():
     app_ = Label(frameRight,text="Todos os livros emprestados no momento",width=50,compound=LEFT, padx=5,pady=10, relief=FLAT, anchor=NW, font=('Verdana 12'),bg=co1, fg=co4)
     app_.grid(row=0, column=0, columnspan=3, sticky=NSEW)
@@ -472,7 +474,55 @@ def borrowed_books():
     for item in dados:
         tree.insert('', 'end', values=item)
 
+# Função para --> Devolução<-- de um emprestimo
+def devolution():
+    global img_salvar
 
+    def add():
+
+        loan_id = e_id_emprestimo.get()
+        return_date = e_data_retorno.get()
+
+        lista = [loan_id,return_date]
+
+         #verificando caso um campo esteja vazio ou não
+
+        for i in lista:
+            if i=='':
+                messagebox.showerror('Erro', 'Preencha todos os campos')
+                return
+            
+            #inserindo os dados no banco de dados
+        return_loan(loan_id, return_date)
+
+        messagebox.showinfo("Sucesso", "Livro retornado com o sucesso")
+
+        #limpando os campos de entradas
+        e_id_emprestimo.delete(0,END)
+        e_data_retorno.delete(0,END)
+       
+    app_ = Label(frameRight, text="Atualizar a data de devolução do empréstimo", width=50, compound=LEFT, padx=5, pady=10, font=('Verdana 12'), bg=co1, fg=co4)
+    app_.grid(row=0, column=0, columnspan=3, sticky=NSEW)
+    app_linha = Label(frameRight, width=400, height=1, anchor=NW, font=('Verdana 1'), bg=co3, fg=co1)
+    app_linha.grid(row=1, column=0, columnspan=3, sticky=NSEW)
+
+    l_id_emprestimo= Label(frameRight, text="ID empréstimo*", anchor=NW,font=('Ivy 10'), bg=co1, fg=co4)
+    l_id_emprestimo.grid(row=2, column=0, padx=5, pady=5, sticky=NSEW)
+    e_id_emprestimo = Entry(frameRight, width=25, justify='left', relief='solid')
+    e_id_emprestimo.grid(row=2, column=1, padx=5, pady=5, sticky=NSEW)
+
+    l_data_retorno = Label(frameRight, text="Nova data de devolução (formato: AAAA-MM-DD)*", anchor=NW,font=('Ivy 10'), bg=co1, fg=co4)
+    l_data_retorno.grid(row=3, column=0, padx=5, pady=5, sticky=NSEW)
+    e_data_retorno = Entry(frameRight, width=25, justify='left', relief='solid')
+    e_data_retorno.grid(row=3, column=1, padx=5, pady=5, sticky=NSEW)
+
+
+    # Botão Salvar---------------------
+    img_salvar = Image.open("./images/save.png")
+    img_salvar = img_salvar.resize((18, 18))
+    img_salvar = ImageTk.PhotoImage( img_salvar)
+    b_salvar = Button(frameRight, command=add ,image=img_salvar, compound=LEFT,width=100,anchor=NW, text="Salvar", bg=co1, fg=co4, font=('Ivy 11'), overrelief=RIDGE, relief=GROOVE)
+    b_salvar.grid(row=7, column=1, pady=5, sticky=NSEW)
 
 
 window.mainloop()
