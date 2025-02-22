@@ -1,6 +1,6 @@
 ```markdown
 # Sistema-de-Gerenciamento-de-Livros
-
+<img alt="GitHub Last Commit" src="https://img.shields.io/github/last-commit/Deyv7/Sistema-de-Gerenciamento-de-Livros" />
 ## Descrição
 O **Sistema de Gerenciamento de Livros** é uma aplicação desenvolvida em Python que possibilita o cadastro e o gerenciamento de livros, usuários e empréstimos para uma biblioteca. O sistema utiliza:
 - **SQLite3** para armazenamento dos dados.
