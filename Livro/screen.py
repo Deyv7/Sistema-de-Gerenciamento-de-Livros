@@ -44,7 +44,7 @@ frameRight.grid(row=1, column=1, sticky=NSEW)
 
 #Logo -----------------------------------------------
 # Abrindo Imagem Título no Cabeçalho
-app_img = Image.open('./images/logo.png')
+app_img = Image.open('./images/carro-logo.png')
 app_img = app_img.resize(((40, 40)))
 app_img = ImageTk.PhotoImage(app_img)
 
@@ -355,7 +355,7 @@ def see_books():
         messagebox.showinfo("Aviso", "Nenhum carro encontrado!")
 
     # Cria a visualização em árvore com barras de rolagem
-    list_header = ['ID', 'Titulo', 'Autor', 'Editora', 'Ano', 'ISBN']
+    list_header = ['ID', 'Nome', 'Marca', 'Modelo', 'Ano', 'Placa']
     global tree
     tree = ttk.Treeview(frameRight, selectmode="extended", columns=list_header, show="headings")
     
