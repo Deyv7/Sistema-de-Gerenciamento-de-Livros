@@ -47,11 +47,11 @@ frameRight.grid(row=1, column=1, sticky=NSEW)
 app_img = Image.open('./images/carro-logo.png')
 app_img = app_img.resize(((40, 40)))
 app_img = ImageTk.PhotoImage(app_img)
-
+# Título
 app_logo = Label(frameUP, image=app_img, width=1000, compound=LEFT, padx=5, anchor=NW, bg=co6, fg=co1)
 app_logo.place(x=5, y=0)
 
-app_=Label(frameUP, text="Sistema de Gerenciamento de Carros", compound=LEFT, padx=5, anchor=NW, font=('Verdana 15 bold'), bg=co6, fg=co1)
+app_=Label(frameUP, text="Sistema de Gerenciamento de Carros", compound=LEFT, padx=5, anchor=NW, font=('Verdana 15 bold'), bg=co6, fg=co0)
 app_.place(x=50, y=7)
 
 #Linha de borda do cabeçalho
@@ -159,12 +159,6 @@ def control(i):
             widget.destroy()
         #chamando a função realizar um emprestimo
         borrowed_books()
-
-
-
-# Linha de borda do cabeçalho ------------------------
-app_line = Label(frameUP, width=770, padx=5, anchor=NW, font=('Verdana 1'), bg=co3, fg=co1)
-app_line.place(x=0, y=47)
 
 # Função para -->INSERIR<-- um novo Usuário
 def new_user():
