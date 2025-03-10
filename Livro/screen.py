@@ -51,7 +51,7 @@ app_img = ImageTk.PhotoImage(app_img)
 app_logo = Label(frameUP, image=app_img, width=1000, compound=LEFT, padx=5, anchor=NW, bg=co6, fg=co1)
 app_logo.place(x=5, y=0)
 
-app_=Label(frameUP, text="Sistema de Gerenciamento de Livros", compound=LEFT, padx=5, anchor=NW, font=('Verdana 15 bold'), bg=co6, fg=co1)
+app_=Label(frameUP, text="Sistema de Gerenciamento de Carros", compound=LEFT, padx=5, anchor=NW, font=('Verdana 15 bold'), bg=co6, fg=co1)
 app_.place(x=50, y=7)
 
 #Linha de borda do cabeçalho
@@ -75,17 +75,17 @@ b_see_user = Button(frameLeft, image=img_see_user, command=lambda:control('ver u
 b_see_user.grid(row=2, column=0, sticky=NSEW, padx=5, pady=6)
 
 #Novo Livro ------------------------------------------
-img_book = Image.open('./images/book.png')
+img_book = Image.open('./images/carro.png')
 img_book = img_book.resize((18, 18))
 img_book = ImageTk.PhotoImage(img_book)
-b_book = Button(frameLeft, image=img_book, text="Novo Livro", command=lambda:control('novo livro'), compound=LEFT, anchor=NW, font=('Ivy 11'), overrelief=RIDGE, relief=GROOVE, bg=co4, fg=co1)
+b_book = Button(frameLeft, image=img_book, text="Novo Carro", command=lambda:control('novo livro'), compound=LEFT, anchor=NW, font=('Ivy 11'), overrelief=RIDGE, relief=GROOVE, bg=co4, fg=co1)
 b_book.grid(row=1, column=0, sticky=NSEW, padx=5, pady=6)
 
 # Ver Livro ------------------------------------------
-img_see_book = Image.open('./images/book.png')
+img_see_book = Image.open('./images/carro.png')
 img_see_book = img_see_book.resize((18, 18))
 img_see_book = ImageTk.PhotoImage(img_see_book)
-b_see_book = Button(frameLeft, image=img_see_book, command=lambda:control('ver livros'), text="Exibir todos os Livros", compound=LEFT, anchor=NW, font=('Ivy 11'), overrelief=RIDGE, relief=GROOVE, bg=co4, fg=co1)
+b_see_book = Button(frameLeft, image=img_see_book, command=lambda:control('ver livros'), text="Exibir todos os Carros", compound=LEFT, anchor=NW, font=('Ivy 11'), overrelief=RIDGE, relief=GROOVE, bg=co4, fg=co1)
 b_see_book.grid(row=3, column=0, sticky=NSEW, padx=5, pady=6)
 
 # Realizar um Emprestimo ----------------------------
@@ -106,7 +106,7 @@ b_devolution.grid(row=5, column=0, sticky=NSEW, padx=5, pady=6)
 img_books_on_loan = Image.open('./images/add.png')
 img_books_on_loan = img_books_on_loan.resize((18, 18))
 img_books_on_loan = ImageTk.PhotoImage(img_books_on_loan)
-b_books_on_loan = Button(frameLeft, image=img_books_on_loan, text="Livros emprestados no momento", command=lambda:control('livros emprestados'), compound=LEFT, anchor=NW, font=('Ivy 11'), overrelief=RIDGE, relief=GROOVE, bg=co4, fg=co1)
+b_books_on_loan = Button(frameLeft, image=img_books_on_loan, text="Carros emprestados no momento", command=lambda:control('livros emprestados'), compound=LEFT, anchor=NW, font=('Ivy 11'), overrelief=RIDGE, relief=GROOVE, bg=co4, fg=co1)
 b_books_on_loan.grid(row=6, column=0, sticky=NSEW, padx=5, pady=6)
 
 # Função para controlar o MENU -----------------------
@@ -293,7 +293,7 @@ def new_book():
             #inserido os dados no banco de dados
         insert_book(title, author, publisher, year, isbn)
 
-        messagebox.showinfo("Sucesso", "Livro inserido com o sucesso")
+        messagebox.showinfo("Sucesso", "Carro inserido com o sucesso")
 
         #limpando os campos de entradas
         e_titlo.delete(0,END)
@@ -302,32 +302,32 @@ def new_book():
         e_ano.delete(0,END)
         e_isbn.delete(0,END)
     
-    app_ = Label(frameRight, text="Inserir um novo livro", width=50, compound=LEFT, padx=5, pady=10, font=('Verdana 12'), bg=co1, fg=co4)
+    app_ = Label(frameRight, text="Inserir um novo carro", width=50, compound=LEFT, padx=5, pady=10, font=('Verdana 12'), bg=co1, fg=co4)
     app_.grid(row=0, column=0, columnspan=3, sticky=NSEW)
     app_linha = Label(frameRight, width=400, height=1, anchor=NW, font=('Verdana 1'), bg=co3, fg=co1)
     app_linha.grid(row=1, column=0, columnspan=3, sticky=NSEW)
 
-    l_titlo= Label(frameRight, text="Título do livro ", anchor=NW,font=('Ivy 10'), bg=co1, fg=co4)
+    l_titlo= Label(frameRight, text="Nome do carro ", anchor=NW,font=('Ivy 10'), bg=co1, fg=co4)
     l_titlo.grid(row=2, column=0, padx=5, pady=5, sticky=NSEW)
     e_titlo = Entry(frameRight, width=25, justify='left', relief='solid')
     e_titlo.grid(row=2, column=1, padx=5, pady=5, sticky=NSEW)
 
-    l_autor = Label(frameRight, text="Autor do título*", anchor=NW,font=('Ivy 10'), bg=co1, fg=co4)
+    l_autor = Label(frameRight, text="Marca do Carro*", anchor=NW,font=('Ivy 10'), bg=co1, fg=co4)
     l_autor.grid(row=3, column=0, padx=5, pady=5, sticky=NSEW)
     e_autor = Entry(frameRight, width=25, justify='left', relief='solid')
     e_autor.grid(row=3, column=1, padx=5, pady=5, sticky=NSEW)
 
-    l_editora = Label(frameRight, text="Editora do livro* ", anchor=NW,font=('Ivy 10'), bg=co1, fg=co4)
+    l_editora = Label(frameRight, text="Modelo do carro* ", anchor=NW,font=('Ivy 10'), bg=co1, fg=co4)
     l_editora.grid(row=4, column=0, padx=5, pady=5, sticky=NSEW)
     e_editora = Entry(frameRight, width=25, justify='left', relief='solid')
     e_editora.grid(row=4, column=1, padx=5, pady=5, sticky=NSEW)
 
-    l_ano = Label(frameRight, text="Ano de publicação do livro* ", anchor=NW,font=('Ivy 10'), bg=co1, fg=co4)
+    l_ano = Label(frameRight, text="Ano do carro* ", anchor=NW,font=('Ivy 10'), bg=co1, fg=co4)
     l_ano .grid(row=5, column=0, padx=5, pady=5, sticky=NSEW)
     e_ano = Entry(frameRight, width=25, justify='left', relief='solid')
     e_ano.grid(row=5, column=1, padx=5, pady=5, sticky=NSEW)
 
-    l_isbn = Label(frameRight, text="ISBN do livro* ", anchor=NW,font=('Ivy 10'), bg=co1, fg=co4)
+    l_isbn = Label(frameRight, text="Placa do carro* ", anchor=NW,font=('Ivy 10'), bg=co1, fg=co4)
     l_isbn .grid(row=6, column=0, padx=5, pady=5, sticky=NSEW)
     e_isbn = Entry(frameRight, width=25, justify='left', relief='solid')
     e_isbn.grid(row=6, column=1, padx=5, pady=5, sticky=NSEW)
@@ -341,7 +341,7 @@ def new_book():
 
 # Função para -->VER<-- Livros
 def see_books():
-    app_ = Label(frameRight, text="Todos os livros", width=50, compound=LEFT, padx=5, pady=10,
+    app_ = Label(frameRight, text="Todos os carros", width=50, compound=LEFT, padx=5, pady=10,
                  relief=FLAT, anchor=NW, font=('Verdana 12'), bg=co1, fg=co4)
     app_.grid(row=0, column=0, columnspan=3, sticky=NSEW)
     l_linha = Label(frameRight, width=400, height=1, anchor=NW, font=('Verdana 1'), bg=co3, fg=co1)
@@ -352,7 +352,7 @@ def see_books():
     if dados is None:
         # Caso não retorne dados, atribuímos uma lista vazia ou exiba uma mensagem
         dados = []
-        messagebox.showinfo("Aviso", "Nenhum livro encontrado!")
+        messagebox.showinfo("Aviso", "Nenhum carro encontrado!")
 
     # Cria a visualização em árvore com barras de rolagem
     list_header = ['ID', 'Titulo', 'Autor', 'Editora', 'Ano', 'ISBN']
@@ -415,7 +415,7 @@ def realize():
     e_id_usuario = Entry(frameRight, width=25, justify='left', relief='solid')
     e_id_usuario.grid(row=2, column=1, padx=5, pady=5, sticky=NSEW)
 
-    l_id_livro = Label(frameRight, text="Digite o ID do livro*", anchor=NW,font=('Ivy 10'), bg=co1, fg=co4)
+    l_id_livro = Label(frameRight, text="Digite o ID do carro*", anchor=NW,font=('Ivy 10'), bg=co1, fg=co4)
     l_id_livro.grid(row=3, column=0, padx=5, pady=5, sticky=NSEW)
     e_id_livro = Entry(frameRight, width=25, justify='left', relief='solid')
     e_id_livro.grid(row=3, column=1, padx=5, pady=5, sticky=NSEW)
@@ -430,7 +430,7 @@ def realize():
 
 # Função para --> exibir<-- todos os Livros emprestados
 def borrowed_books():
-    app_ = Label(frameRight,text="Todos os livros emprestados no momento",width=50,compound=LEFT, padx=5,pady=10, relief=FLAT, anchor=NW, font=('Verdana 12'),bg=co1, fg=co4)
+    app_ = Label(frameRight,text="Todos os Carros emprestados no momento",width=50,compound=LEFT, padx=5,pady=10, relief=FLAT, anchor=NW, font=('Verdana 12'),bg=co1, fg=co4)
     app_.grid(row=0, column=0, columnspan=3, sticky=NSEW)
     l_linha = Label(frameRight, width=400, height=1,anchor=NW, font=('Verdana 1 '), bg=co3, fg=co1)
     l_linha.grid(row=1, column=0, columnspan=3, sticky=NSEW)
@@ -495,7 +495,7 @@ def devolution():
             #inserindo os dados no banco de dados
         return_loan(loan_id, return_date)
 
-        messagebox.showinfo("Sucesso", "Livro retornado com o sucesso")
+        messagebox.showinfo("Sucesso", "Carro retornado com o sucesso")
 
         #limpando os campos de entradas
         e_id_emprestimo.delete(0,END)
